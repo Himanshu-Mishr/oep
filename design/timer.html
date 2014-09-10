@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script>
+    unction resetTimer(seconds){
+ SECONDS_LEFT = seconds;
+ document.Timer.TimeLeft.value = SECONDS_LEFT;
+ clearTimeout(TIMER);
+}
+
+function decrementTimer(){
+ TIMES_UP = false;
+ document.Timer.TimeLeft.value = SECONDS_LEFT;
+ SECONDS_LEFT--;
+
+
+ if (SECONDS_LEFT >= 0) {
+  TIMER = setTimeout(decrementTimer, 1000);
+ } else {
+  alert("Time's up!");
+  resetTimer(60);
+ }
+}
+</script>
+</head>
+
+<body onload="resetTimer(60)">
+
+<form name="Timer" onsubmit="return false;">
+Timer: <input type="text" name="TimeLeft" size="2"
+  style="text-align:center" onfocus="this.blur();">
+  seconds left<br>
+  <input type="button" name="btnStart"
+   value="Start Quizz" onclick="decrementTimer();">
+  <input type="button" name="btnReset"
+   value="Retry" onclick="resetTimer(60);">
+</form>
+</body>
+</html>
